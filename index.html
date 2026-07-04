@@ -173,8 +173,9 @@ nav .container {
 }
 
 .hero h1 {
-  font-size: clamp(48px, 6vw, 84px);
+  font-size: clamp(56px, 7vw, 100px);
   margin-bottom: 28px;
+  max-width: 100%;
 }
 
 .hero h1 em {
@@ -186,18 +187,26 @@ nav .container {
   font-size: 20px;
   color: var(--stone);
   margin-bottom: 40px;
-  max-width: 520px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-ctas {
   display: flex;
   gap: 16px;
   align-items: center;
+  justify-content: center;
   margin-bottom: 60px;
 }
 
 .hero-stats {
+  display: flex;
+  gap: 48px;
   justify-content: center;
+  padding-top: 32px;
+  border-top: 1px solid var(--bone-dark);
+  width: 100%;
 }
 
 .hero-stat .number {
