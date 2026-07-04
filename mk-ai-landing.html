@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MK AI — Stop missing bookings. Start growing.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1A1A;
+  --cream: #FAF7F2;
+  --clay: #C9714A;
+  --clay-dark: #A85A36;
+  --sage: #6B7A5B;
+  --stone: #8C817A;
+  --bone: #EDE6DD;
+  --bone-dark: #D9CFC2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+.display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clay);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+section {
+  padding: 120px 0;
+  position: relative;
+}
+
+/* Nav */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--bone-dark);
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+
+.logo span {
+  color: var(--clay);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--clay);
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 100px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn:hover {
+  background: var(--clay);
+  transform: translateY(-1px);
+}
+
+.btn-large {
+  padding: 18px 40px;
+  font-size: 16px;
+}
+
+.btn-clay {
+  background: var(--clay);
+}
+
+.btn-clay:hover {
+  background: var(--clay-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+/* Hero */
+.hero {
+  padding: 180px 0 100px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6vw, 84px);
+  margin-bottom: 28px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.hero-sub {
+  font-size: 20px;
+  color: var(--stone);
+  margin-bottom: 40px;
+  max-width: 520px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--bone-dark);
+}
+
+.hero-stat .number {
+  font-family: 'Fraunces', serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--ink);
+  display: block;
+  letter-spacing: -0.02em;
+}
+
+.hero-stat .label {
+  font-size: 13px;
+  color: var(--stone);
+  margin-top: 4px;
+}
+
+/* Demo video card */
+.video-card {
+  background: transparent;
+  padding: 0;
+  border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(26, 26, 26, 0.12);
+}
+
+.video-placeholder {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(201, 113, 74, 0.15) 0%, transparent 60%);
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--clay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.play-button:hover {
+  transform: scale(1.05);
+}
+
+.play-button::after {
+  content: '';
+  border-left: 20px solid var(--cream);
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  margin-left: 6px;
+}
+
+.video-label {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  color: var(--cream);
+  font-size: 13px;
+  z-index: 1;
+}
+
+.video-label .video-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* Problem section */
+.problem-section {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.problem-section .eyebrow {
+  color: var(--clay);
+}
+
+.problem-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.problem-header h2 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  margin: 16px auto 0;
+  max-width: 800px;
+}
+
+.problem-header h2 em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.calculator {
+  background: rgba(250, 247, 242, 0.04);
+  border: 1px solid rgba(250, 247, 242, 0.1);
+  border-radius: 20px;
+  padding: 64px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.calc-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(250, 247, 242, 0.08);
+  gap: 32px;
+}
+
+.calc-row:last-child {
+  border-bottom: none;
+  padding-top: 36px;
+}
+
+.calc-row.total {
+  background: rgba(201, 113, 74, 0.08);
+  margin: 16px -32px -32px;
+  padding: 36px 32px;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 113, 74, 0.2);
+}
+
+.calc-label {
+  font-size: 18px;
+  color: var(--cream);
+}
+
+.calc-label small {
+  display: block;
+  color: var(--stone);
+  font-size: 13px;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.calc-value {
+  font-family: 'Fraunces', serif;
+  font-size: 42px;
+  font-weight: 500;
+  color: var(--clay);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.calc-row.total .calc-value {
+  font-size: 56px;
+  color: var(--clay);
+}
+
+.calc-disclaimer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--stone);
+  margin-top: 32px;
+  font-style: italic;
+}
+
+/* Services section */
+.services-section {
+  background: var(--cream);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-header h2 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  margin: 16px auto 0;
+  max-width: 700px;
+}
+
+.section-header h2 em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.section-header p {
+  font-size: 18px;
+  color: var(--stone);
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: white;
+  border: 1px solid var(--bone);
+  border-radius: 16px;
+  padding: 40px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--clay);
+  box-shadow: 0 20px 50px rgba(201, 113, 74, 0.08);
+}
+
+.service-number {
+  font-family: 'Fraunces', serif;
+  font-size: 14px;
+  color: var(--clay);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.service-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  color: var(--stone);
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+}
+
+.service-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.service-features li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--clay);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* How it works */
+.how-section {
+  background: var(--bone);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 60px;
+}
+
+.process-step {
+  position: relative;
+}
+
+.step-number {
+  font-family: 'Fraunces', serif;
+  font-size: 64px;
+  font-weight: 400;
+  color: var(--clay);
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -0.04em;
+}
+
+.process-step h4 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.process-step p {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+/* Impact section */
+.impact-section {
+  background: var(--cream);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.impact-text h2 {
+  font-size: clamp(36px, 4vw, 52px);
+  margin-bottom: 24px;
+}
+
+.impact-text h2 em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.impact-text .lead {
+  font-size: 18px;
+  color: var(--stone);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.impact-list {
+  list-style: none;
+}
+
+.impact-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--bone-dark);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.impact-list li:last-child {
+  border-bottom: 1px solid var(--bone-dark);
+}
+
+.impact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--bone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--clay);
+  font-weight: 500;
+}
+
+.impact-list strong {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.impact-list span {
+  font-size: 14px;
+  color: var(--stone);
+}
+
+.impact-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid var(--bone);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.stat-card .big-number {
+  font-family: 'Fraunces', serif;
+  font-size: 52px;
+  font-weight: 500;
+  color: var(--clay);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-card .stat-label {
+  font-size: 13px;
+  color: var(--stone);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 12px;
+}
+
+.stat-card.dark {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.stat-card.dark .big-number {
+  color: var(--cream);
+}
+
+.stat-card.dark .stat-label {
+  color: var(--stone);
+}
+
+/* Pricing */
+.pricing-section {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.pricing-section .eyebrow {
+  color: var(--clay);
+}
+
+.pricing-card {
+  max-width: 500px;
+  margin: 60px auto 0;
+  background: var(--cream);
+  color: var(--ink);
+  border-radius: 24px;
+  padding: 60px 48px;
+  text-align: center;
+  position: relative;
+}
+
+.pricing-card::before {
+  content: 'Early customer special';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--clay);
+  color: var(--cream);
+  padding: 6px 18px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.pricing-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.pricing-card .price {
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 32px 0 8px;
+}
+
+.pricing-card .price-period {
+  color: var(--stone);
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.pricing-features {
+  list-style: none;
+  text-align: left;
+  margin: 40px 0;
+}
+
+.pricing-features li {
+  padding: 12px 0;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 15px;
+  border-bottom: 1px solid var(--bone);
+}
+
+.pricing-features li:last-child {
+  border-bottom: none;
+}
+
+.pricing-features li::before {
+  content: '✓';
+  color: var(--clay);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.pricing-note {
+  background: var(--bone);
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+.pricing-note strong {
+  color: var(--clay);
+}
+
+/* CTA */
+.cta-section {
+  padding: 100px 0;
+  text-align: center;
+  background: var(--cream);
+  border-top: 1px solid var(--bone-dark);
+}
+
+.cta-section h2 {
+  font-size: clamp(40px, 5vw, 64px);
+  margin-bottom: 24px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-section h2 em {
+  font-style: italic;
+  color: var(--clay);
+}
+
+.cta-section p {
+  font-size: 18px;
+  color: var(--stone);
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer */
+footer {
+  background: var(--ink);
+  color: var(--stone);
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+footer .logo {
+  color: var(--cream);
+  margin-bottom: 16px;
+  display: block;
+}
+
+footer p {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+footer .copyright {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(250, 247, 242, 0.08);
+  font-size: 13px;
+}
+
+/* Live counter */
+.live-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201, 113, 74, 0.1);
+  border: 1px solid rgba(201, 113, 74, 0.2);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--clay);
+  margin-bottom: 24px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--clay);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.counter-number {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  section {
+    padding: 80px 0;
+  }
+  
+  .container {
+    padding: 0 24px;
+  }
+  
+  .hero {
+    padding: 140px 0 60px;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .hero-stats {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  
+  .hero-stat .number {
+    font-size: 28px;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  
+  .impact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .calculator {
+    padding: 32px 24px;
+  }
+  
+  .calc-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .calc-value {
+    font-size: 32px;
+  }
+  
+  .calc-row.total .calc-value {
+    font-size: 40px;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .impact-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-card {
+    padding: 48px 28px;
+  }
+  
+  .pricing-card .price {
+    font-size: 64px;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="logo">MK<span> AI</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <a href="https://calendly.com/mkai/logoslogic-demo-call" target="_blank" class="btn btn-clay btn-large">Book a demo</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="live-counter">
+          <span class="live-dot"></span>
+          <span><span class="counter-number" id="counter">2,847</span> calls missed across GTA salons today</span>
+        </div>
+        <h1 class="display">The phone rings.<br>You're mid-haircut.<br><em>Another booking lost.</em></h1>
+        <p class="hero-sub">MK AI handles your bookings, cancellations, and follow-ups — by text and by phone, 24/7. So you stay focused on your clients, not your inbox.</p>
+        <div class="hero-ctas">
+          <a href="https://calendly.com/mkai/logoslogic-demo-call" target="_blank" class="btn btn-clay btn-large">See it in action</a>
+          <a href="#how" class="btn btn-outline btn-large">How it works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="number">24/7</span>
+            <span class="label">Always answering</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">~3 min</span>
+            <span class="label">To book any appointment</span>
+          </div>
+          <div class="hero-stat">
+            <span class="number">$0</span>
+            <span class="label">Setup fee for early customers</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="video-card">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+            <iframe
+              src="https://www.youtube.com/embed/doau1Pp7AMg"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem-section">
+  <div class="container">
+    <div class="problem-header">
+      <div class="eyebrow">The hidden cost</div>
+      <h2 class="display">Missed calls are <em>missed money</em>. Here's what's slipping through.</h2>
+    </div>
+    
+    <div class="calculator">
+      <div class="calc-row">
+        <div class="calc-label">
+          Calls you miss per week
+          <small>Mid-cut, lunch break, after hours — they all add up</small>
+        </div>
+        <div class="calc-value">~25</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">
+          That convert to actual bookings
+          <small>Industry average: 60% of missed calls never call back</small>
+        </div>
+        <div class="calc-value">~10</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">
+          Average service ticket
+          <small>Cut, color, styling — combined services</small>
+        </div>
+        <div class="calc-value">$85</div>
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">
+          Hours per week spent on the phone
+          <small>Booking, rescheduling, confirming, reminding</small>
+        </div>
+        <div class="calc-value">~12 hrs</div>
+      </div>
+      <div class="calc-row total">
+        <div class="calc-label">
+          <strong style="color: var(--cream);">Estimated monthly revenue lost</strong>
+          <small>From missed bookings alone — not counting the time tax</small>
+        </div>
+        <div class="calc-value">$3,400+</div>
+      </div>
+      <p class="calc-disclaimer">Numbers based on industry averages for mid-sized GTA hair salons. Your real numbers may be higher.</p>
+    </div>
+  </div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">What we do</div>
+      <h2 class="display">A full <em>booking team</em>, without hiring anyone.</h2>
+      <p>Four systems that work together to capture every customer, fill your calendar, and keep your existing ones coming back.</p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <h3>AI Web Receptionist</h3>
+        <p>A booking widget on your website that talks to customers like a human. Books appointments, answers questions, captures leads — even at 2 AM.</p>
+        <ul class="service-features">
+          <li>Books straight into your calendar</li>
+          <li>Captures phone number for follow-up</li>
+          <li>Sends SMS confirmation automatically</li>
+          <li>Handles stylist preferences and service types</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <h3>AI Phone Receptionist</h3>
+        <p>Your phone never goes unanswered again. AI picks up, takes the booking, and confirms — sounding natural and professional the whole time.</p>
+        <ul class="service-features">
+          <li>Answers 24/7, never on hold</li>
+          <li>Books appointments during the call</li>
+          <li>Routes to specific stylists by preference</li>
+          <li>Handles cancellations and reschedules by phone</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <h3>Automated Follow-Up</h3>
+        <p>Customers who book stay booked. Customers who almost booked come back. Customers who came in get reminded to leave a review.</p>
+        <ul class="service-features">
+          <li>No-show detection and recovery texts</li>
+          <li>Post-appointment review requests</li>
+          <li>Cold lead re-engagement (1 nudge per lead)</li>
+          <li>SMS confirmations and reminders</li>
+        </ul>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-number">04</div>
+        <h3>Cancel & Reschedule by Text</h3>
+        <p>Customers can text "cancel" or "reschedule" anytime. Your calendar updates automatically. You never have to play phone tag again.</p>
+        <ul class="service-features">
+          <li>Instant calendar updates</li>
+          <li>Frees up slots for new bookings immediately</li>
+          <li>Tracks reschedule requests in one place</li>
+          <li>Reduces no-shows by making it easy to cancel</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">How it works</div>
+      <h2 class="display">From <em>busy phone line</em> to fully booked. In four steps.</h2>
+    </div>
+    
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">01</div>
+        <h4>We learn your salon</h4>
+        <p>Stylists, services, hours, pricing. We set up the AI to sound like part of your team.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">02</div>
+        <h4>We plug into your tools</h4>
+        <p>Google Calendar, your phone number, your existing website. No new software for you to learn.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">03</div>
+        <h4>You go live in days</h4>
+        <p>Most salons are up and running within a week. We test everything end-to-end before launch.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">04</div>
+        <h4>You stop answering phones</h4>
+        <p>The AI handles every booking, follow-up, and confirmation. You focus on doing great work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact-section">
+  <div class="container">
+    <div class="impact-grid">
+      <div class="impact-text">
+        <div class="eyebrow">Real impact</div>
+        <h2 class="display">More <em>bookings</em>. Less <em>busywork</em>.</h2>
+        <p class="lead">Owners spend 10–15 hours a week on the phone for tasks an AI can do in seconds. Here's what that time and money looks like back in your pocket.</p>
+        
+        <ul class="impact-list">
+          <li>
+            <div class="impact-icon">+</div>
+            <div>
+              <strong>Capture 100% of incoming requests</strong>
+              <span>No more "they called while I was busy" — every lead gets a response.</span>
+            </div>
+          </li>
+          <li>
+            <div class="impact-icon">↓</div>
+            <div>
+              <strong>Cut phone time by 80%</strong>
+              <span>From ~12 hours a week to ~2 hours of human follow-up.</span>
+            </div>
+          </li>
+          <li>
+            <div class="impact-icon">↑</div>
+            <div>
+              <strong>Recover ~$3,400/mo in lost bookings</strong>
+              <span>Industry average for missed call conversion in salons.</span>
+            </div>
+          </li>
+          <li>
+            <div class="impact-icon">★</div>
+            <div>
+              <strong>More 5-star reviews automatically</strong>
+              <span>Every happy customer gets a follow-up text asking for a review.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="impact-stats">
+        <div class="stat-card">
+          <div class="big-number">~10</div>
+          <div class="stat-label">Hours saved per week</div>
+        </div>
+        <div class="stat-card dark">
+          <div class="big-number">$3.4k</div>
+          <div class="stat-label">Recovered monthly revenue</div>
+        </div>
+        <div class="stat-card dark">
+          <div class="big-number">24/7</div>
+          <div class="stat-label">Always answering</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-number">~7d</div>
+          <div class="stat-label">From signup to live</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Pricing</div>
+      <h2 class="display">One <em>flat rate</em>. Everything included.</h2>
+    </div>
+    
+    <div class="pricing-card">
+      <h3>Complete Booking System</h3>
+      <p style="color: var(--stone); font-size: 15px;">Web + phone + follow-ups + cancellations</p>
+      <div class="price">$500</div>
+      <div class="price-period">per month</div>
+      
+      <div class="pricing-note">
+        <strong>Early customer special:</strong> First salon in each city pays <strong>$0 setup fee</strong> in exchange for a case study.
+      </div>
+      
+      <ul class="pricing-features">
+        <li>AI web receptionist (24/7 booking)</li>
+        <li>AI phone receptionist (24/7 calls)</li>
+        <li>SMS confirmations & reminders</li>
+        <li>Cancel & reschedule by text</li>
+        <li>No-show detection & recovery</li>
+        <li>Post-appointment review requests</li>
+        <li>Cold lead re-engagement</li>
+        <li>Setup, training, and ongoing support</li>
+      </ul>
+      
+      <a href="#contact" class="btn btn-clay btn-large" style="width: 100%; box-sizing: border-box;">Book a demo</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2 class="display">Stop missing bookings. <em>Start growing.</em></h2>
+    <p>10 minutes on a call. We'll show you exactly how it works for your salon — and what it would cost to stop losing money on missed calls.</p>
+    <a href="https://calendly.com/mkai/logoslogic-demo-call" target="_blank" class="btn btn-clay btn-large">Book your demo call</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">MK<span style="color: var(--clay);"> AI</span></div>
+    <p>AI booking systems for service businesses</p>
+    <p>Based in Markham, Ontario — serving the GTA</p>
+    <div class="copyright">
+      © 2026 MK AI. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Live counter that increments
+const counter = document.getElementById('counter');
+let count = 2847;
+
+function incrementCounter() {
+  count += Math.floor(Math.random() * 3) + 1;
+  counter.textContent = count.toLocaleString();
+}
+
+setInterval(incrementCounter, 4000);
+
+// Smooth scroll handled by CSS scroll-behavior
+</script>
+
+</body>
+</html>
