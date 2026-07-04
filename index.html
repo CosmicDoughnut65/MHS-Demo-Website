@@ -165,10 +165,11 @@ nav .container {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 80px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 48px;
+  text-align: center;
 }
 
 .hero h1 {
@@ -219,15 +220,16 @@ nav .container {
 
 /* Demo video card */
 .video-card {
-  background: var(--ink);
+  background: transparent;
+  padding: 0;
   border-radius: 16px;
-  padding: 8px;
-  position: relative;
   box-shadow: 0 30px 80px rgba(26, 26, 26, 0.12);
+  width: 100%;
+  max-width: 900px;
 }
 
 .video-placeholder {
-  aspect-ratio: 9/16;
+  aspect-ratio: 16/9;
   background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
   border-radius: 10px;
   display: flex;
@@ -955,18 +957,16 @@ footer .copyright {
           </div>
         </div>
       </div>
-      <div>
         <div class="video-card">
           <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
             <iframe
               src="https://www.youtube.com/embed/doau1Pp7AMg"
               style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen>
             </iframe>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </section>
